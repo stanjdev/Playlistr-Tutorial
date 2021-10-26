@@ -1,10 +1,11 @@
+from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
+from bson.objectid import ObjectId
 
 client = MongoClient()
 db = client.Playlister
 playlists = db.playlists
 
-from flask import Flask, render_template, request, redirect, url_for
 app = Flask(__name__)
 
 def video_url_creator(id_list):
@@ -51,6 +52,22 @@ def playlists_submit():
   playlists.insert_one(playlist)
   return redirect(url_for('playlists_index'))
 
+@app.route('/playlists/<playlist_id>')
+def playlists_show(playlist_id):
+  """ Show a single playlist """
+  playlist = playlists.find_one({'_id': ObjectId(playlist_id)})
+  return render_template('playlists_show.html', playlist=playlist)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -58,4 +75,3 @@ def playlists_submit():
 
 if __name__ == '__main__':
   app.run(debug=True)
-
