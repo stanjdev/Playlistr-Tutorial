@@ -52,7 +52,7 @@ def playlists_submit():
     'video_ids': video_ids
   }
   playlists.insert_one(playlist)
-  return redirect(url_for('playlist_show'))
+  return redirect(url_for('playlists_index'))
 
 @app.route('/playlists/<playlist_id>')
 def playlists_show(playlist_id):
