@@ -20,8 +20,13 @@
     <p>
       <form method="POST" action="/playlists/{{ playlist._id }}/delete">
         <button type="submit">Delete</button>
-      </form>
+      </form> 
     </p>
+
+    <hr>
+
+    {% include 'partials/comment_form.html' %}
+    
   </div>
 </div>
 
