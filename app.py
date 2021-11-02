@@ -5,11 +5,16 @@ from pymongo.message import update
 import os
 
 host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/Playlister')
-client = MongoClient(host=f'{host}?retryWrites=false')
+
+client = MongoClient(f"mongodb+srv://stanley:Ogp7hF5ti5S4jcO9@cluster0.1avch.mongodb.net/Cluster0?retryWrites=true&w=majority")
+db = client.test
+
+# client = MongoClient(host=f'{host}?retryWrites=false')
 # client = MongoClient(host=host)
 # client = MongoClient()
-db = client.get_default_database()
+# db = client.get_default_database()
 # db = client.Playlister
+# one collection from the database called 'playlists'
 playlists = db.playlists
 
 app = Flask(__name__)
