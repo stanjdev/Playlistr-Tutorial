@@ -4,16 +4,14 @@ from bson.objectid import ObjectId
 from pymongo.message import update
 import os
 
+# MONGODB_URI is Config Var stored in settings: https://dashboard.heroku.com/apps/playlistr-sj/settings 
 host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/Playlister')
-
-# client = MongoClient(f"mongodb+srv://stanley:Ogp7hF5ti5S4jcO9@cluster0.1avch.mongodb.net/Cluster0?retryWrites=true&w=majority")
 client = MongoClient(host=host)
-db = client.test
+# db = client.test
 
 # client = MongoClient(host=f'{host}?retryWrites=false')
 # client = MongoClient(host=host)
-# client = MongoClient()
-# db = client.get_default_database()
+db = client.get_default_database()
 # db = client.Playlister
 # one collection from the database called 'playlists'
 playlists = db.playlists
