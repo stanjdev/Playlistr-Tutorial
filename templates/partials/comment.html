@@ -4,9 +4,8 @@
   <div class='card-block p-4'>
       <h4 class='card-title'>{{ comment.title }}</h4>
       <p class='card-text'>{{ comment.content }}</p>
-      <!-- <form action="POST" action='/playlists/comments'>
-        <input type='hidden' value='{{ comment.playlist_id }}' name='playlist_id'>
-        <button class="btn btn-danger">Delete</button>
-      </form> -->
+      <div class="card-block d-flex flex-column">
+        <a href="/playlists/{{ playlist._id }}/comments/{{ comment._id }}/delete" class="btn btn-danger rounded btn-sm align-self-end">Delete</a>
+      </div>
   </div>
 </div>
