@@ -6,7 +6,8 @@ import os
 
 host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/Playlister')
 
-client = MongoClient(f"mongodb+srv://stanley:Ogp7hF5ti5S4jcO9@cluster0.1avch.mongodb.net/Cluster0?retryWrites=true&w=majority")
+# client = MongoClient(f"mongodb+srv://stanley:Ogp7hF5ti5S4jcO9@cluster0.1avch.mongodb.net/Cluster0?retryWrites=true&w=majority")
+client = MongoClient(host=host)
 db = client.test
 
 # client = MongoClient(host=f'{host}?retryWrites=false')
