@@ -68,7 +68,7 @@ def playlists_submit():
 def playlists_show(playlist_id):
   """ Show a single playlist """
   playlist = playlists.find_one({'_id': ObjectId(playlist_id)})
-  playlist_comments = comments.find_one({'playlist_id': ObjectId(playlist_id)})
+  playlist_comments = comments.find({'playlist_id': ObjectId(playlist_id)})
   return render_template('playlists_show.html', playlist=playlist, comments=playlist_comments)
 
 @app.route('/playlists/<playlist_id>/edit')
@@ -107,6 +107,7 @@ def playlists_delete(playlist_id):
 def comments_new():
   """ Submit a new comment """
   comment = {
+    'playlist_id': ObjectId(request.form.get('playlist_id')),
     'title': request.form.get('title'),
     'content': request.form.get('content'),
   }
