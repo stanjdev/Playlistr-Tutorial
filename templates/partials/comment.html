@@ -1,8 +1,12 @@
 <!-- templates/partials/comment.html -->
 
 <div class='card'>
-  <div class='card-block'>
+  <div class='card-block p-4'>
       <h4 class='card-title'>{{ comment.title }}</h4>
       <p class='card-text'>{{ comment.content }}</p>
+      <!-- <form action="POST" action='/playlists/comments'>
+        <input type='hidden' value='{{ comment.playlist_id }}' name='playlist_id'>
+        <button class="btn btn-danger">Delete</button>
+      </form> -->
   </div>
 </div>

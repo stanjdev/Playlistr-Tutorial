@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
 from bson.objectid import ObjectId
-from pymongo.message import update
 import os
+from datetime import datetime
 
 # MONGODB_URI is Config Var stored in settings: https://dashboard.heroku.com/apps/playlistr-sj/settings 
 host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/Playlister')
@@ -102,7 +102,6 @@ def playlists_delete(playlist_id):
   playlists.delete_one({'_id': ObjectId(playlist_id)})
   return redirect(url_for('playlists_index'))
 
-
 @app.route('/playlists/comments', methods=['POST'])
 def comments_new():
   """ Submit a new comment """
@@ -110,11 +109,16 @@ def comments_new():
     'playlist_id': ObjectId(request.form.get('playlist_id')),
     'title': request.form.get('title'),
     'content': request.form.get('content'),
+    'comment_id': ObjectId()
   }
   comments.insert_one(comment)
   return redirect(url_for('playlists_show', playlist_id=request.form.get('playlist_id')))
 
-
+# @app.route('/playlists/comments/<comment_id>', methods=['POST'])
+# def delete_comment(comment_id):
+#   """ Delete a comment """
+#   comments.delete_one({'comment_id': ObjectId(comment_id)})
+#   return redirect(url_for('playlists_show', playlist_id=request.form.get('playlist_id')))
 
 if __name__ == '__main__':
   app.run(debug=True, host='0.0.0.0', port=os.environ.get('PORT', 5000))
