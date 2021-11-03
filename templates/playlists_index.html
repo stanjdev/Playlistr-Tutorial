@@ -8,7 +8,9 @@
   <div class="row">
     {% for playlist in playlists %}
       <div class="col-md-3 card">
-        <h2 class="card-title"><a href='/playlists/{{ playlist._id }}'>{{ playlist.title }}</a></h2>
+        <!-- <h2 class="card-title"><a href='/playlists/{{ playlist._id }}'>{{ playlist.title }}</a></h2>
+        <small class="card-text">{{ playlist.description }}</small> -->
+        <h2 class="card-title"><a href='/playlists/{{ playlist._id }}'>test handle</a></h2>
         <small class="card-text">{{ playlist.description }}</small>
       </div>
     {% endfor %}
